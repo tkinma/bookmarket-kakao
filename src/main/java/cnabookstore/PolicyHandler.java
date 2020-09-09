@@ -41,4 +41,19 @@ public class PolicyHandler{
         }
     }
 
+    @StreamListener(KafkaProcessor.INPUT)
+    public void wheneverOderCanceled_SendKakaoMessage(@Payload OrderCanceled orderCanceled){
+
+        if(orderCanceled.isMe()){
+            System.out.println("##### listener SendKakaoMessage : " + orderCanceled.toJson());
+
+            KakaoAlarm kakaoAlarm = new KakaoAlarm();
+            kakaoAlarm.setDeliveryId(orderCanceled.getId());
+            kakaoAlarm.setDeliveryStatus("OderCanceled");
+            kakaoAlarm.setKakaoMessage("Book Order Canceled");
+
+            kakaoAlarmRepository.save(kakaoAlarm);
+        }
+    }
+
 }
