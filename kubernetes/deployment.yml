@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: kakao
-          image: jwkimacr.azurecr.io/kakao:latest
+          image: admin35.azurecr.io/kakao:latest
           ports:
             - containerPort: 8080
  #        resources:
