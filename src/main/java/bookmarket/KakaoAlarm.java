@@ -1,9 +1,18 @@
-package cnabookstore;
+package bookmarket;
 
-public class MessageSended extends AbstractEvent {
+import javax.persistence.*;
+import org.springframework.beans.BeanUtils;
 
+@Entity
+@Table(name="KakaoAlarm_table")
+public class KakaoAlarm {
+
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private Long deliveryId;
+    private String kakaoMessage;
+    private String deliveryStatus;
 
     public Long getDeliveryId() {
         return deliveryId;
@@ -29,11 +38,11 @@ public class MessageSended extends AbstractEvent {
         this.deliveryStatus = deliveryStatus;
     }
 
-    private String kakaoMessage;
-    private String deliveryStatus;
-
-    public MessageSended(){
-        super();
+    @PrePersist
+    public void onPrePersist(){
+        MessageSended messageSended = new MessageSended();
+        BeanUtils.copyProperties(this, messageSended);
+        messageSended.publishAfterCommit();
     }
 
     public Long getId() {
@@ -43,4 +52,5 @@ public class MessageSended extends AbstractEvent {
     public void setId(Long id) {
         this.id = id;
     }
+
 }

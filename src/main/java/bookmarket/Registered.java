@@ -1,5 +1,5 @@
 
-package cnabookstore;
+package bookmarket;
 
 public class Registered extends AbstractEvent {
 

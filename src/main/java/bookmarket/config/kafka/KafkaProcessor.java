@@ -1,4 +1,4 @@
-package cnabookstore.config.kafka;
+package bookmarket.config.kafka;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;

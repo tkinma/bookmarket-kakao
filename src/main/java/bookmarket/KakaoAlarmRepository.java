@@ -1,4 +1,4 @@
-package cnabookstore;
+package bookmarket;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 

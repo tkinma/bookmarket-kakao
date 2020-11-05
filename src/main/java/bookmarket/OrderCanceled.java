@@ -1,5 +1,5 @@
 
-package cnabookstore;
+package bookmarket;
 
 public class OrderCanceled extends AbstractEvent {
 
